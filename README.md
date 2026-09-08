@@ -5,7 +5,8 @@
 To ensure high performance for analytical queries and dashboards, the data architecture was designed following a strict Star Schema methodology. This separation into Facts and Dimensions guarantees data integrity, avoids redundancy, and allows scalable aggregations for our specific KPIs.
 
 ### Star Schema Diagram
-![Star Schema Diagram](link-to-your-diagram-image.png)
+![Star Schema Diagram](<img width="1009" height="519" alt="star-shema" src="https://github.com/user-attachments/assets/502f63bc-5183-4062-8ad3-32edd523556c" />
+)
 
 ### Design Justification
 

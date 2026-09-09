@@ -2,9 +2,9 @@
 
 ## 1. Project Overview
 
-This repository contains the author’s solution for the ETL workshop challenge. The main goal was to take a CSV file that holds 50,000 candidate records, clean and transform that data with Python (Pandas) and then load it into a PostgreSQL Data Warehouse.
+This repository contains my solution for the ETL workshop challenge. The main goal was to take a CSV file that holds 50,000 candidate records, clean and transform that data with Python (Pandas) and then load it into a PostgreSQL Data Warehouse.
 
-The author built the data model with a Star Schema to make reporting clear and querying fast. After loading the cleaned data through SQLAlchemy the author drew visualizations that rely on SQL queries taken straight from the database. The original CSV file was never used for the charts.
+Built the tranform with a Star Schema to make reporting clear and querying fast. After loading the cleaned data through SQLAlchemy I drew visualizations that rely on SQL queries taken straight from the database. The original CSV file was never used for the charts.
 
 ## 2. How to run this project
 
@@ -12,9 +12,9 @@ To run this project the user must have Python and PostgreSQL installed on their 
 
 1. Clone this repository.
 
-2. Create a database in pgAdmin4. You can name it `workshop_etl`.
+2. Create a database in pgAdmin4. You can name it `etl`.
 
-3. Open the `ETL_Notebook.ipynb` file.
+3. Open the `etl_candidates.ipynb` file.
 
 4. Update the database connection variables (`USER` `PASSWORD` `HOST` ` `DB_NAME`) with your own local PostgreSQL credentials.
 
@@ -26,7 +26,7 @@ To run this project the user must have Python and PostgreSQL installed on their 
 
 ### Star Schema Design
 
-The author chose a Star Schema because it separates metrics from context making analytical queries easier and faster.
+I have designed this Star Schema because it separates metrics from context making analytical queries easier and faster.
 
 ![Star Schema Diagram](https://github.com/JheffreyUrbano/candidate-selection-etl/blob/bf8797a0439ae40569e050b45cb494d459ef91b5/assets/star-schema.png)
 

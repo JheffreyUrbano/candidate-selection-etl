@@ -32,23 +32,23 @@ I have designed this Star Schema because it separates metrics from context makin
 
 *(Note: Diagram created using dbdiagram.io to show relationships between facts and dimensions)*
 
-* **Fact Table (`fact_applications`)**: This central table holds scores and years of experience. The author also added a column named `is_hired` (boolean). The column is calculated using the business rule: both technical and challenge scores must be at least 7. Pre‑calculating this during the ETL saves time as the database does not need to compute this logic on every query.
+* **Fact Table (`fact_applications`)**: This central table holds scores and years of experience. I also added a column named `is_hired` (boolean). The column is calculated using the business rule: both technical and challenge scores must be at least 7. Pre‑calculating this during the ETL saves time as the database does not need to compute this logic on every query.
 
-* **Dimension Tables**: The author split the context data into five dimension tables: `dim_candidate` `dim_country` `dim_seniority` `dim_technology` and `dim_date`. Isolating the `dim_date` table is especially useful for filtering and grouping data by year in visualizations avoiding heavy date‑parsing functions.
+* **Dimension Tables**: I split the context data into five dimension tables: `dim_candidate` `dim_country` `dim_seniority` `dim_technology` and `dim_date`. Isolating the `dim_date` table is especially useful for filtering and grouping data by year in visualizations avoiding heavy date‑parsing functions.
 
 ### Data Cleaning Strategies
 
-Real‑world data is often messy. Because this data was randomly generated it contained specific anomalies. The author applied the following cleaning steps in Pandas before loading it into the database:
+Real‑world data is often messy. Because this data was randomly generated it contained specific anomalies. So I proceeded applied the following cleaning steps in Pandas before loading it into the database:
 
-* **Null Values**: The author removed rows where essential identifiers such as email or application date were missing. For missing test scores the author replaced them with 0 assuming the test was not taken.
+* **Null Values**: I removed rows where essential identifiers such as email or application date were missing. For missing test scores the author replaced them with 0 assuming the test was not taken.
 
 * **Missing Experience (YOE)**: than using 0 or dropping rows with missing years of experience the author used statistical imputation. The author filled those values with the experience of the corresponding seniority level making the data more realistic.
 
-* **Outliers**: The author used the Interquartile Range (IQR) method to handle anomalous values in the years of experience column. For example a candidate listed with 40 years of experience but classified as an "Intern" was capped to a number using winsorization bounds.
+* **Outliers**: I used the Interquartile Range (IQR) method to handle anomalous values in the years of experience column. For example a candidate listed with 40 years of experience but classified as an "Intern" was capped to a number using winsorization bounds.
 
 ## 4. KPIs & Visualizations
 
-After cleaning and loading the data the author’s queries found that 7,660 candidates were effectively hired (scores ≥ 7). Because the original CSV data was randomly generated using a library the distributions are quite uniform.
+After cleaning and loading the data the queries found that 7,660 candidates were effectively hired (scores ≥ 7). Because the original CSV data was randomly generated using a library the distributions are quite uniform.
 
 ### Hires by Technology
 

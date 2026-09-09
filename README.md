@@ -14,9 +14,9 @@ To run this project, you must have Python and PostgreSQL installed on your machi
 
 2. Create a database in pgAdmin4. You can name it `etl`.
 
-3. Open the `etl_candidates.ipynb` file.
+3. Open the `etl_candidates_csv.ipynb` file.
 
-4. Update the database connection variables (`USER` `PASSWORD` `HOST` ` `DB_NAME`) with your own local PostgreSQL credentials.
+4. Update the database connection variables (`USER` `PASSWORD` `HOST` `PORT `DB_NAME`) with your own local PostgreSQL credentials.
 
 5. Run all the cells in the notebook in order. This will extract the data clean it apply business rules and load it into the database.
 

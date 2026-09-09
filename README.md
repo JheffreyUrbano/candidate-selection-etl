@@ -54,22 +54,22 @@ After cleaning and loading the data the author’s queries found that 7,660 cand
 
 The hiring distribution across technologies is very even. The percentage of hires ranges from 7.9 % for Data Engineer and MuleSoft to 8.7 % for Sales and React.
 
-![Hires by Technology Pie Chart](hires_by_tech.png)
+![Hires by Technology Pie Chart](assets/hires_by_tech.png)
 
 ### Hires by Year
 
 Most hires occurred steadily between 2022 and 2025. Each year in that range had around 1,500 hires with tails in 2021 and early 2026.
 
-![Hires by Year Bar Chart](hires_by_year.png)
+![Hires by Year Bar Chart](assets/hires_by_year.png)
 
 ### Hires by Seniority
 
 All seniority levels maintained a volume between 1,000 and 1,100 hires. Interestingly the Intern level showed a spike with over 1,400 hires.
 
-![Hires by Seniority Bar Chart](hires_by_seniority.png)
+![Hires by Seniority Bar Chart](assets/hires_by_seniority.png)
 
 ### Hires by Country Over Years
 
 Focusing on the USA, Brazil, Colombia and Ecuador the multi‑line chart shows similar hiring trends with overlapping lines over the years. This uniformity is expected because the dataset was randomly generated.
 
-![Hires, by Country Line Chart](hires_by_country_over_years.png)
+![Hires, by Country Line Chart](assets/hires_by_country_over_years.png)

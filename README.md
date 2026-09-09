@@ -2,13 +2,13 @@
 
 ## 1. Project Overview
 
-This repository contains my solution for the ETL workshop challenge. The main goal was to take a CSV file that holds 50,000 candidate records, clean and transform that data with Python (Pandas) and then load it into a PostgreSQL Data Warehouse.
+This repository contains my solution for the ETL workshop challenge. The main goal was to take a CSV file that holds 50,000 candidate records, clean and transform that data with Python (Pandas), and then load it into a PostgreSQL Data Warehouse.
 
-Built the tranform with a Star Schema to make reporting clear and querying fast. After loading the cleaned data through SQLAlchemy I drew visualizations that rely on SQL queries taken straight from the database. The original CSV file was never used for the charts.
+I built the data model with a Star Schema to make reporting clear and querying fast. After loading the cleaned data through SQLAlchemy, I drew visualizations that rely on SQL queries taken straight from the database. The original CSV file was never used for the charts.
 
 ## 2. How to run this project
 
-To run this project the user must have Python and PostgreSQL installed on their machine with libraries such as pandas, sqlalchemy, matplotlib and seaborn.
+To run this project, you must have Python and PostgreSQL installed on your machine with libraries such as pandas, sqlalchemy, matplotlib, and seaborn.
 
 1. Clone this repository.
 
@@ -26,7 +26,7 @@ To run this project the user must have Python and PostgreSQL installed on their 
 
 ### Star Schema Design
 
-I have designed this Star Schema because it separates metrics from context making analytical queries easier and faster.
+I chose a Star Schema because it separates metrics from context, making analytical queries easier and faster.
 
 ![Star Schema Diagram](https://github.com/JheffreyUrbano/candidate-selection-etl/blob/bf8797a0439ae40569e050b45cb494d459ef91b5/assets/star-schema.png)
 
@@ -40,15 +40,17 @@ I have designed this Star Schema because it separates metrics from context makin
 
 Real‑world data is often messy. Because this data was randomly generated it contained specific anomalies. So I proceeded applied the following cleaning steps in Pandas before loading it into the database:
 
-* **Null Values**: I removed rows where essential identifiers such as email or application date were missing. For missing test scores the author replaced them with 0 assuming the test was not taken.
+* **Null Values**: I removed rows where essential identifiers such as email or application date were missing. For missing test scores, I replaced them with 0 assuming the test was not taken.
 
-* **Missing Experience (YOE)**: than using 0 or dropping rows with missing years of experience the author used statistical imputation. The author filled those values with the experience of the corresponding seniority level making the data more realistic.
+* **Score Scale Correction**: I identified values up to 100 in the test scores, which should follow a 0-10 scale. Any score greater than 10 was divided by 10 to correct scaling typos.
 
-* **Outliers**: I used the Interquartile Range (IQR) method to handle anomalous values in the years of experience column. For example a candidate listed with 40 years of experience but classified as an "Intern" was capped to a number using winsorization bounds.
+* **Missing Experience (YOE)**: I converted any negative years of experience to their absolute positive value. Instead of using 0 or dropping rows with missing years of experience, I used statistical imputation. I filled those values with the median experience of the corresponding seniority level, making the data more realistic.
+
+* **Outliers**: I used the Interquartile Range (IQR) method to handle anomalous values in the years of experience column. For example, a candidate listed with 40 years of experience but classified as an "Intern" was capped to a realistic number using winsorization bounds.
 
 ## 4. KPIs & Visualizations
 
-After cleaning and loading the data the queries found that 7,660 candidates were effectively hired (scores ≥ 7). Because the original CSV data was randomly generated using a library the distributions are quite uniform.
+After cleaning and loading the data, queries found that 7,660 candidates were effectively hired (scores ≥ 7). Because the original CSV data was randomly generated using a library the distributions are quite uniform.
 
 ### Hires by Technology
 
